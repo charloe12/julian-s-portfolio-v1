@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        ocean: {
+          DEFAULT: "hsl(203, 53%, 22%)",
+          light: "hsl(203, 61%, 80%)",
+        },
+        teal: "hsl(162, 29%, 59%)",
+        cream: "hsl(38, 28%, 87%)",
+        sand: "hsl(60, 33%, 97%)",
       },
       borderRadius: {
         lg: "var(--radius)",
