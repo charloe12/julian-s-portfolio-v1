@@ -7,6 +7,7 @@ import surfLesson3 from "@/assets/surf-lesson-3.jpg";
 import golfLesson1 from "@/assets/golf-lesson-1.jpg";
 import golfLesson2 from "@/assets/golf-lesson-2.jpg";
 import golfLesson3 from "@/assets/golf-lesson-3.jpg";
+import logo from "@/assets/ride-and-swing-logo.png";
 
 const Index = () => {
   return (
@@ -15,7 +16,7 @@ const Index = () => {
       <nav className="fixed top-0 w-full bg-primary/95 backdrop-blur-sm z-50 border-b border-primary-foreground/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-primary-foreground">Julian's Lessons</h1>
+            <img src={logo} alt="Ride & Swing - Surf and Golf Lessons" className="h-12" />
             <div className="flex gap-6">
               <a href="#about" className="text-primary-foreground hover:text-accent transition-colors">About</a>
               <a href="#services" className="text-primary-foreground hover:text-accent transition-colors">Services</a>
