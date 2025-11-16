@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Waves, Trophy, Mail, Phone, MapPin } from "lucide-react";
+import surfLesson1 from "@/assets/surf-lesson-1.jpg";
+import surfLesson2 from "@/assets/surf-lesson-2.jpg";
+import surfLesson3 from "@/assets/surf-lesson-3.jpg";
+import golfLesson1 from "@/assets/golf-lesson-1.jpg";
+import golfLesson2 from "@/assets/golf-lesson-2.jpg";
+import golfLesson3 from "@/assets/golf-lesson-3.jpg";
 
 const Index = () => {
   return (
@@ -13,6 +19,7 @@ const Index = () => {
             <div className="flex gap-6">
               <a href="#about" className="text-primary-foreground hover:text-accent transition-colors">About</a>
               <a href="#services" className="text-primary-foreground hover:text-accent transition-colors">Services</a>
+              <a href="#gallery" className="text-primary-foreground hover:text-accent transition-colors">Gallery</a>
               <a href="#contact" className="text-primary-foreground hover:text-accent transition-colors">Contact</a>
             </div>
           </div>
@@ -130,6 +137,78 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 px-4 bg-muted">
+        <div className="container mx-auto">
+          <h3 className="text-4xl font-bold text-center mb-4 text-foreground">Gallery</h3>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            See our students in action as they master the waves and perfect their golf game
+          </p>
+          
+          {/* Surf Lessons Gallery */}
+          <div className="mb-16">
+            <h4 className="text-2xl font-bold mb-6 text-foreground flex items-center justify-center gap-2">
+              <Waves className="w-6 h-6 text-secondary" />
+              Surf Lessons
+            </h4>
+            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-secondary/30">
+                <img 
+                  src={surfLesson1} 
+                  alt="Surf instructor teaching beginner student on surfboard in ocean waves" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-secondary/30">
+                <img 
+                  src={surfLesson2} 
+                  alt="Student successfully riding wave while instructor watches" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-secondary/30">
+                <img 
+                  src={surfLesson3} 
+                  alt="Group surf lesson with students and instructor on beach with surfboards" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Golf Lessons Gallery */}
+          <div>
+            <h4 className="text-2xl font-bold mb-6 text-foreground flex items-center justify-center gap-2">
+              <Trophy className="w-6 h-6 text-accent" />
+              Golf Lessons
+            </h4>
+            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-accent/30">
+                <img 
+                  src={golfLesson1} 
+                  alt="Golf instructor teaching proper swing technique to student on golf course" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-accent/30">
+                <img 
+                  src={golfLesson2} 
+                  alt="Golf student making perfect putt while instructor observes on green" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-2 border-accent/30">
+                <img 
+                  src={golfLesson3} 
+                  alt="Golf instructor demonstrating club grip technique to student on driving range" 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
