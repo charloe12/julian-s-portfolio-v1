@@ -16,7 +16,7 @@ const Index = () => {
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-primary/10 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <img src={logo} alt="Ride & Swing - Surf and Golf Lessons" className="h-12" />
+            <img src={logo} alt="Ride & Swing - Surf and Golf Lessons" className="h-20" />
             <div className="flex gap-6">
               <a href="#about" className="text-primary hover:text-secondary transition-colors font-medium">About</a>
               <a href="#services" className="text-primary hover:text-secondary transition-colors font-medium">Services</a>
