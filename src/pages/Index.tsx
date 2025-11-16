@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Waves, Trophy, Mail, Phone, MapPin } from "lucide-react";
+import { Waves, Trophy, Mail, Phone, MapPin, Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import surfLesson1 from "@/assets/surf-lesson-1.jpg";
 import surfLesson2 from "@/assets/surf-lesson-2.jpg";
 import surfLesson3 from "@/assets/surf-lesson-3.jpg";
@@ -15,14 +21,29 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-primary/10 shadow-sm">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex items-center justify-between">
             <img src={logo} alt="Ride & Swing - Surf and Golf Lessons" className="h-16" />
-            <div className="flex gap-6 pb-1">
-              <a href="#about" className="text-primary hover:text-secondary transition-colors font-medium">About</a>
-              <a href="#services" className="text-primary hover:text-secondary transition-colors font-medium">Services</a>
-              <a href="#gallery" className="text-primary hover:text-secondary transition-colors font-medium">Gallery</a>
-              <a href="#contact" className="text-primary hover:text-secondary transition-colors font-medium">Contact</a>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48 bg-background">
+                <DropdownMenuItem asChild>
+                  <a href="#about" className="w-full cursor-pointer">About</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#services" className="w-full cursor-pointer">Services</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#gallery" className="w-full cursor-pointer">Gallery</a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#contact" className="w-full cursor-pointer">Contact</a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </nav>
