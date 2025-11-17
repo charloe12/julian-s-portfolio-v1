@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { WaveBackground } from "@/components/WaveBackground";
+import { GolfAnimation } from "@/components/GolfAnimation";
 import surfLesson1 from "@/assets/surf-lesson-1.jpg";
 import surfLesson2 from "@/assets/surf-lesson-2.jpg";
 import surfLesson3 from "@/assets/surf-lesson-3.jpg";
@@ -53,6 +54,7 @@ const Index = () => {
       <section className="pt-32 pb-24 px-4 bg-gradient-to-br from-primary via-primary to-secondary relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNiAyLjY4NiA2IDYtMi42ODYgNi02IDYtNi0yLjY4Ni02LTZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
         <WaveBackground />
+        <GolfAnimation />
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in leading-tight drop-shadow-lg">
             Master the Waves & Greens
