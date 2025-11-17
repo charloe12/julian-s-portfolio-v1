@@ -37,23 +37,22 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
 
     const balls: GolfBall[] = [];
     const numBalls = 8;
+    const kickPoint = { x: canvas.width * 0.15, y: canvas.height * 0.85 };
 
-    // Initialize golf balls
+    // Initialize golf balls with staggered timing
     for (let i = 0; i < numBalls; i++) {
       balls.push({
-        x: Math.random() * canvas.width,
-        y: canvas.height + Math.random() * 200,
-        vx: 1 + Math.random() * 2,
-        vy: -3 - Math.random() * 2,
-        startX: 0,
-        startY: 0,
-        progress: Math.random(),
+        x: kickPoint.x,
+        y: kickPoint.y,
+        vx: 2 + Math.random() * 3,
+        vy: -8 - Math.random() * 4,
+        startX: kickPoint.x,
+        startY: kickPoint.y,
+        progress: i * 0.3, // Stagger the kicks
         speed: 0.003 + Math.random() * 0.002,
         size: 4 + Math.random() * 4,
         opacity: 0.3 + Math.random() * 0.3,
       });
-      balls[i].startX = balls[i].x;
-      balls[i].startY = balls[i].y;
     }
 
     const drawGolfBall = (ball: GolfBall) => {
@@ -96,22 +95,30 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      balls.forEach((ball) => {
+      // Draw kick point indicator
+      const kickPoint = { x: canvas.width * 0.15, y: canvas.height * 0.85 };
+      ctx.save();
+      ctx.globalAlpha = 0.2;
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(kickPoint.x, kickPoint.y, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      balls.forEach((ball, index) => {
         // Update position with arc trajectory
         ball.x += ball.vx;
         ball.y += ball.vy;
         
-        // Apply gravity
-        ball.vy += 0.08;
+        // Apply gravity for realistic arc
+        ball.vy += 0.15;
         
-        // Reset when ball goes off screen
-        if (ball.y > canvas.height + 50 || ball.x > canvas.width + 50 || ball.x < -50) {
-          ball.x = -20 - Math.random() * 50;
-          ball.y = canvas.height * (0.3 + Math.random() * 0.5);
-          ball.vx = 1.5 + Math.random() * 2.5;
-          ball.vy = -3 - Math.random() * 3;
-          ball.startX = ball.x;
-          ball.startY = ball.y;
+        // Reset when ball goes off screen - return to kick point
+        if (ball.y > canvas.height + 50 || ball.x > canvas.width + 50) {
+          ball.x = kickPoint.x;
+          ball.y = kickPoint.y;
+          ball.vx = 2 + Math.random() * 3;
+          ball.vy = -8 - Math.random() * 4;
         }
 
         drawGolfBall(ball);
