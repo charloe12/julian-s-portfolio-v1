@@ -33,7 +33,12 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
       speed: number;
       size: number;
       opacity: number;
+      justLaunched?: boolean;
     }
+
+    let clubRotation = 0;
+    let clubAnimating = false;
+    let clubAnimationProgress = 0;
 
     const balls: GolfBall[] = [];
     const numBalls = 8;
@@ -54,6 +59,29 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
         opacity: 0.3 + Math.random() * 0.3,
       });
     }
+
+    const drawGolfClub = (x: number, y: number, rotation: number, opacity: number) => {
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      
+      // Club shaft
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -60);
+      ctx.stroke();
+      
+      // Club head
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.ellipse(0, -60, 8, 12, 0, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.restore();
+    };
 
     const drawGolfBall = (ball: GolfBall) => {
       ctx.save();
@@ -95,15 +123,23 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw kick point indicator
       const kickPoint = { x: canvas.width * 0.15, y: canvas.height * 0.85 };
-      ctx.save();
-      ctx.globalAlpha = 0.2;
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(kickPoint.x, kickPoint.y, 8, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
+
+      // Update club animation
+      if (clubAnimating) {
+        clubAnimationProgress += 0.08;
+        clubRotation = Math.sin(clubAnimationProgress * Math.PI) * (Math.PI / 3);
+        
+        if (clubAnimationProgress >= 1) {
+          clubAnimating = false;
+          clubAnimationProgress = 0;
+          clubRotation = 0;
+        }
+      }
+
+      // Draw golf club
+      const clubOpacity = clubAnimating ? 0.6 : 0.3;
+      drawGolfClub(kickPoint.x, kickPoint.y, clubRotation, clubOpacity);
 
       balls.forEach((ball, index) => {
         // Update position with arc trajectory
@@ -119,6 +155,12 @@ export const GolfAnimation = ({ className = '' }: GolfAnimationProps) => {
           ball.y = kickPoint.y;
           ball.vx = 2 + Math.random() * 3;
           ball.vy = -8 - Math.random() * 4;
+          
+          // Trigger club animation
+          if (!clubAnimating) {
+            clubAnimating = true;
+            clubAnimationProgress = 0;
+          }
         }
 
         drawGolfBall(ball);
